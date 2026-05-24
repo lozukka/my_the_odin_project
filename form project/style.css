@@ -1,0 +1,12 @@
+@font-face {
+  font-family: Norsebold;
+  src: url("./fonts/Norsebold.otf") format("opentype");
+}
+@font-face {
+  font-family: Norse;
+  src: url("./fonts/Norse.otf") format("opentype");
+}
+
+* {
+  font-family: "Norse";
+}
