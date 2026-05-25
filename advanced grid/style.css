@@ -45,6 +45,27 @@ body {
 }
 aside {
   grid-area: aside;
+  width: 300px;
+  background: #1992d4;
+}
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 15px;
+}
+#logo svg {
+  fill: white;
+}
+#logo a {
+  font-size: 20px;
+  font-weight: 600;
+}
+#logo a,
+nav a {
+  text-decoration: none;
+  color: white;
 }
 header {
   grid-area: head;
