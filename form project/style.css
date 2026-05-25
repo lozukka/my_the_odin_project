@@ -64,10 +64,10 @@ main {
   font-size: 25px;
   padding-left: 40px;
   padding-right: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
 }
 #form-section {
-  padding-left: 40px;
+  padding: 30px 40px;
   background: white;
   box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.1);
 }
@@ -84,5 +84,45 @@ main {
   text-decoration: underline;
 }
 /*----FORM----*/
-form {
+input {
+  border: 1px solid #e5e7eb;
+  width: 250px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+input:user-invalid {
+  border: 1px solid red;
+}
+input:focus {
+  /*border: 1px solid blue;*/ /*My browser added the blue border automaticly, so I don't know if this is needed.*/
+  box-shadow: 5px 5px 11px 0px rgba(0, 0, 0, 0.22);
+}
+fieldset {
+  border: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 15px;
+}
+fieldset div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+label {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+button {
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  background: #596d48;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
