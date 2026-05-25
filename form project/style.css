@@ -21,6 +21,7 @@ main {
   flex-wrap: nowrap;
   height: 100vh;
 }
+/*----LEFT SIDE----*/
 #left {
   display: flex;
   flex-direction: column;
@@ -49,4 +50,39 @@ main {
 #photo-credit,
 #photo-credit a {
   color: rgba(255, 255, 255, 0.6);
+}
+/*----RIGHT SIDE----*/
+#right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  background: #f7f9fa;
+}
+#intro {
+  font-weight: 600;
+  font-size: 25px;
+  padding-left: 40px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+}
+#form-section {
+  padding-left: 40px;
+  background: white;
+  box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.1);
+}
+#account-already {
+  padding-left: 40px;
+  font-weight: 600;
+  padding-top: 35px;
+}
+#account-already a {
+  color: #596d48;
+  text-decoration: none;
+}
+#account-already a:hover {
+  text-decoration: underline;
+}
+/*----FORM----*/
+form {
 }
