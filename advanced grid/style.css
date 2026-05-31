@@ -1,36 +1,37 @@
-/* roboto-regular - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./fonts/roboto-v51-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+@layer fonts {
+  /* roboto-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/roboto-v51-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* roboto-500 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    src: url("./fonts/roboto-v51-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* roboto-600 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    src: url("./fonts/roboto-v51-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* roboto-900 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 900;
+    src: url("./fonts/roboto-v51-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
 }
-/* roboto-500 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  src: url("./fonts/roboto-v51-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* roboto-600 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 600;
-  src: url("./fonts/roboto-v51-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* roboto-900 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 900;
-  src: url("./fonts/roboto-v51-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -43,46 +44,106 @@ body {
     "aside head"
     "aside main";
 }
-aside {
-  grid-area: aside;
-  width: 300px;
-  background: #1992d4;
+@layer aside {
+  aside {
+    grid-area: aside;
+    width: 300px;
+    background: #1992d4;
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+    margin: 1.25rem !important;
+    padding: 20px;
+    gap: 15px;
+  }
+  #logo svg {
+    fill: white;
+  }
+  #logo a {
+    font-size: 20px;
+  }
+  #logo a,
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    margin: 1.25rem !important;
+  }
+  .links:first-child {
+    padding-bottom: 3rem !important;
+    padding-top: 2rem !important;
+  }
+  .single-link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .single-link:hover {
+    cursor: pointer;
+  }
+  .single-link svg {
+    fill: white;
+  }
 }
-#logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  gap: 15px;
+
+@layer header {
+  header {
+    grid-area: head;
+    display: flex;
+    justify-content: space-between;
+  }
+  #search-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem !important;
+  }
+  #search-bar input {
+    background-color: rgb(235, 231, 231);
+    border: none;
+    height: 30px;
+    width: 600px;
+    border-radius: 15px;
+  }
+  #logged-in {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 2rem !important;
+  }
+  #logged-in span img {
+    border-radius: 50%;
+  }
+  #logged-in p {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
 }
-#logo svg {
-  fill: white;
-}
-#logo a {
-  font-size: 20px;
-  font-weight: 600;
-}
-#logo a,
-nav a {
-  text-decoration: none;
-  color: white;
-}
-header {
-  grid-area: head;
-}
-main {
-  grid-area: main;
-  display: grid;
-  grid-template-areas:
-    "top top"
-    "projects right-side";
-}
-#user-greeting {
-  grid-area: top;
-}
-#your-projects {
-  grid-area: projects;
-}
-.right-panel {
-  grid-area: right-side;
+@layer main {
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+      "top top"
+      "projects right-side";
+  }
+  #user-greeting {
+    grid-area: top;
+  }
+  #your-projects {
+    grid-area: projects;
+  }
+  .right-panel {
+    grid-area: right-side;
+  }
 }
