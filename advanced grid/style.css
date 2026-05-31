@@ -170,7 +170,9 @@ body {
     background: rgb(225, 232, 240);
     padding: 2rem !important;
   }
-  #your-projects h2 {
+  #your-projects h2,
+  #announcements h2,
+  #trending h2 {
     margin-bottom: 1rem !important;
   }
   .project-cards {
@@ -199,5 +201,18 @@ body {
     grid-area: right-side;
     background: rgb(225, 232, 240);
     padding: 2rem !important;
+  }
+  #announcements {
+    margin-bottom: 2rem !important;
+  }
+  .announcement-items {
+    background-color: white;
+    padding: 2rem 3rem !important;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }
