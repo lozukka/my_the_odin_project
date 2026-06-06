@@ -55,7 +55,7 @@ function updateTable() {
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.pages}</td>
-        <td> <button class="status-btn ${book.read ? "read" : "not-read"}" onclick="changeStatus('${book.id}')">${book.read ? "Read" : "Not Yet"}</button></td>
+        <td> <button class="status-btn ${book.read ? "read" : "not-read"}" onclick="changeStatus('${book.id}')">${book.read ? "Read" : "Not Read"}</button></td>
         <td><button onclick ="removeBook('${book.id}')">Remove</button></td>
         `;
 
