@@ -27,7 +27,7 @@ form.addEventListener("submit", (e) => {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  const read = document.getElementById("read").value;
+  const read = document.getElementById("read").checked;
 
   addBookToLibrary(title, author, pages, read);
   form.classList.add("hidden");
@@ -55,7 +55,7 @@ function updateTable() {
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.pages}</td>
-        <td>${book.read}</td>
+        <td> <button class="status-btn ${book.read ? "read" : "not-read"}" onclick="changeStatus('${book.id}')">${book.read ? "Read" : "Not Yet"}</button></td>
         <td><button onclick ="removeBook('${book.id}')">Remove</button></td>
         `;
 
@@ -65,5 +65,13 @@ function updateTable() {
 
 function removeBook(id) {
   myLibrary = myLibrary.filter((book) => book.id !== id);
+  updateTable();
+}
+
+function changeStatus(id) {
+  const book = myLibrary.find((item) => item.id === id);
+
+  book.read = !book.read;
+
   updateTable();
 }
