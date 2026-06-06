@@ -18,7 +18,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-  console.log(myLibrary);
+  updateTable();
 }
 
 form.addEventListener("submit", (e) => {
@@ -33,3 +33,37 @@ form.addEventListener("submit", (e) => {
   form.classList.add("hidden");
   form.reset();
 });
+
+function updateTable() {
+  myLibraryTable.innerHTML = "";
+
+  const tableHeading = document.createElement("tr");
+  tableHeading.innerHTML = `
+    <th>Name:</th>
+          <th>Author:</th>
+          <th>Pages:</th>
+          <th>Read:</th>
+          <th>Delete:</th>
+    `;
+  myLibraryTable.appendChild(tableHeading);
+
+  myLibrary.forEach((book) => {
+    const tableRow = document.createElement("tr");
+    tableRow.setAttribute("data-id", book.id);
+
+    tableRow.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.read}</td>
+        <td><button onclick ="removeBook('${book.id}')">Remove</button></td>
+        `;
+
+    myLibraryTable.appendChild(tableRow);
+  });
+}
+
+function removeBook(id) {
+  myLibrary = myLibrary.filter((book) => book.id !== id);
+  updateTable();
+}

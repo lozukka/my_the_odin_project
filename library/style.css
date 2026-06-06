@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 1rem;
+  padding: 0;
 }
 
 table {
