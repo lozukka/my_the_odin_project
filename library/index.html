@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <button>Add New Book</button>
-      <table>
+      <h1>Collection</h1>
+      <table id="my-library-table">
         <tr>
-          <th></th>
           <th>Name:</th>
           <th>Author:</th>
           <th>Pages:</th>
@@ -18,6 +18,26 @@
           <th>Delete:</th>
         </tr>
       </table>
+      <button id="add-btn">Add New Book</button>
+      <form id="new-book" class="hidden">
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" />
+        </div>
+        <div>
+          <label for="pages">How many pages:</label>
+          <input type="number" name="pages" id="pages" />
+        </div>
+        <div>
+          <label for="read">Read?</label>
+          <input type="checkbox" name="read" id="read" />
+        </div>
+        <button>Submit</button>
+      </form>
     </main>
   </body>
   <script src="script.js"></script>
