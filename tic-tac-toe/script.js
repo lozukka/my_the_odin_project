@@ -77,8 +77,93 @@ function GameController(
       `Changing ${getActivePlayer().name}'s token into cell ${row} / ${column}`,
     );
     game.changeToken(row, column, getActivePlayer().token);
+
+    const result = checkWinner();
+
+    if (result === "draw") {
+      game.printBoard();
+      console.log("It's a draw!");
+      return;
+    }
+
+    if (result) {
+      game.printBoard();
+      console.log(`${result.name} wins!`);
+      return;
+    }
+
     switchPlayerTurn();
     printNewRound();
+  };
+
+  const checkWinner = () => {
+    const board = game.getBoard();
+
+    const v = (row, col) => board[row][col].getValue();
+
+    const winningCombinations = [
+      // Rows
+      [
+        [0, 0],
+        [0, 1],
+        [0, 2],
+      ],
+      [
+        [1, 0],
+        [1, 1],
+        [1, 2],
+      ],
+      [
+        [2, 0],
+        [2, 1],
+        [2, 2],
+      ],
+      // Columns
+      [
+        [0, 0],
+        [1, 0],
+        [2, 0],
+      ],
+      [
+        [0, 1],
+        [1, 1],
+        [2, 1],
+      ],
+      [
+        [0, 2],
+        [1, 2],
+        [2, 2],
+      ],
+      // Diagonals
+      [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+      ],
+      [
+        [0, 2],
+        [1, 1],
+        [2, 0],
+      ],
+    ];
+
+    for (const combination of winningCombinations) {
+      const [a, b, c] = combination;
+      if (
+        v(a[0], a[1]) !== 0 &&
+        v(a[0], a[1]) === v(b[0], b[1]) &&
+        v(a[0], a[1]) === v(c[0], c[1])
+      ) {
+        return getActivePlayer();
+      }
+    }
+
+    const isDraw = board.every((row) =>
+      row.every((cell) => cell.getValue() !== 0),
+    );
+    if (isDraw) return "draw";
+
+    return null;
   };
 
   return { playRound, getActivePlayer, getBoard: game.getBoard };
@@ -121,4 +206,5 @@ function ScreenController() {
 
   updateScreen();
 }
+
 ScreenController();
