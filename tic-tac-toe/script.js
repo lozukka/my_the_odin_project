@@ -173,7 +173,7 @@ function GameController(
 }
 
 function ScreenController() {
-  let game = GameController();
+  let game;
   const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
   const resultDiv = document.querySelector(".winner");
@@ -211,7 +211,7 @@ function ScreenController() {
 
     if (!selectedColumn || !selectedRow) return;
 
-    game.playRound(selectedRow, selectedColumn);
+    game.playRound(Number(selectedRow), Number(selectedColumn));
     updateScreen();
   }
 
