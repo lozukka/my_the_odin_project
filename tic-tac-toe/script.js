@@ -47,6 +47,7 @@ function Cell() {
 function GameController(
   playerOneName = "Player One",
   playerTwoName = "Player Two",
+  resetGame,
 ) {
   const game = Gameboard();
   const players = [
@@ -83,12 +84,14 @@ function GameController(
     if (result === "draw") {
       game.printBoard();
       console.log("It's a draw!");
+      gameOver("draw", resetGame);
       return;
     }
 
     if (result) {
       game.printBoard();
       console.log(`${result.name} wins!`);
+      gameOver(result.name, resetGame);
       return;
     }
 
@@ -170,9 +173,10 @@ function GameController(
 }
 
 function ScreenController() {
-  const game = GameController();
+  let game = GameController();
   const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
+  const resultDiv = document.querySelector(".winner");
 
   const updateScreen = () => {
     boardDiv.textContent = "";
@@ -187,7 +191,15 @@ function ScreenController() {
 
         cellButton.dataset.row = rowIndex;
         cellButton.dataset.column = colIndex;
-        cellButton.textContent = cell.getValue();
+        if (cell.getValue() === 0) {
+          cellButton.textContent = " ";
+        } else if (cell.getValue() === 1) {
+          cellButton.textContent = "X";
+        } else if (cell.getValue() === 2) {
+          cellButton.textContent = "O";
+        } else {
+          cellButton.textContent = cell.getValue();
+        }
         boardDiv.appendChild(cellButton);
       });
     });
@@ -202,9 +214,43 @@ function ScreenController() {
     game.playRound(selectedRow, selectedColumn);
     updateScreen();
   }
+
+  function resetGame() {
+    game = GameController("Player One", "Player Two", resetGame);
+    resultDiv.classList.add("hidden");
+    resultDiv.textContent = "";
+    boardDiv.classList.remove("hidden");
+    updateScreen();
+  }
+  game = GameController("Player One", "Player Two", resetGame);
+
   boardDiv.addEventListener("click", clickHandlerBoard);
 
   updateScreen();
+
+  return { resetGame };
+}
+
+function gameOver(result, resetGame) {
+  const boardDiv = document.querySelector(".board");
+  const resultDiv = document.querySelector(".winner");
+
+  boardDiv.classList.add("hidden");
+  resultDiv.classList.remove("hidden");
+
+  const winnerMessage = document.createElement("h2");
+  if (result === "draw") {
+    winnerMessage.textContent = `It's a draw!`;
+  } else {
+    winnerMessage.textContent = `${result} is the winner!`;
+  }
+  resultDiv.appendChild(winnerMessage);
+
+  const resetBtn = document.createElement("button");
+  resetBtn.textContent = "Play again";
+  resultDiv.appendChild(resetBtn);
+
+  resetBtn.addEventListener("click", resetGame);
 }
 
 ScreenController();
